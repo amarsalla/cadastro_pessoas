@@ -45,7 +45,7 @@ class _CadastroPessoasPageState extends State<CadastroPessoasPage> {
       // Aqui você pode adicionar a lógica para salvar os dados, como enviar para uma API ou salvar localmente
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Acho que o Cadastro realizado com sucesso!')),
+        const SnackBar(content: Text('Acho qro realizado com sucesso!')),
       );
 
       // Limpa os campos do formulário
