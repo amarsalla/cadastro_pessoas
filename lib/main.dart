@@ -31,6 +31,7 @@ class _CadastroPessoasPageState extends State<CadastroPessoasPage> {
   final _formKey = GlobalKey<FormState>();
   final _nomeController = TextEditingController();
   final _cpfController = TextEditingController();
+  String _ultimoNomeCadastrado = '';
 
   @override
   void dispose() {
@@ -41,6 +42,9 @@ class _CadastroPessoasPageState extends State<CadastroPessoasPage> {
 
   void _cadastrarPessoa() {
     if (_formKey.currentState!.validate()) {
+      setState(() {
+        _ultimoNomeCadastrado = _nomeController.text;
+      });
 
       // Aqui você pode adicionar a lógica para salvar os dados, como enviar para uma API ou salvar localmente
 
@@ -82,6 +86,7 @@ class _CadastroPessoasPageState extends State<CadastroPessoasPage> {
         child: Form(
           key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
                 controller: _nomeController,
@@ -99,6 +104,9 @@ class _CadastroPessoasPageState extends State<CadastroPessoasPage> {
                 onPressed: _cadastrarPessoa,
                 child: const Text('Cadastrar'),
               ),
+              const SizedBox(height: 20),
+              if (_ultimoNomeCadastrado.isNotEmpty)
+                Text('Último nome cadastrado: $_ultimoNomeCadastrado'),
             ],
           ),
         ),
